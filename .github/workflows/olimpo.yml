@@ -1,0 +1,22 @@
+name: Olimpo Autonomia Cloud
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Executa a cada 30 minutos automaticamente
+  workflow_dispatch:
+
+jobs:
+  executar-autonomia:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Executar Script de Autonomia
+        run: |
+          python3 autonomia_expediente.py
