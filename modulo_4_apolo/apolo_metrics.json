@@ -1,0 +1,29 @@
+{
+    "total_eventos": 3,
+    "mensagens_processadas": 1,
+    "alertas_disparados": 1,
+    "historico": [
+        {
+            "timestamp": "2026-10-09 16:39:51",
+            "tipo": "NOVA_MENSAGEM",
+            "detalhes": {
+                "user_id": "8928125542",
+                "text": "Teste Apolo"
+            }
+        },
+        {
+            "timestamp": "2026-10-09 16:39:51",
+            "tipo": "ALERTA_ENVIADO",
+            "detalhes": {
+                "origem": "Hermes"
+            }
+        },
+        {
+            "timestamp": "2026-10-09 16:55:49",
+            "tipo": "SISTEMA_INICIADO",
+            "detalhes": {
+                "status": "Boot Concluído"
+            }
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+-- SQL Schema Olimpo AI com pgvector e olimpo_logs
