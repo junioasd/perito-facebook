@@ -20,3 +20,11 @@ jobs:
       - name: Executar Script de Autonomia
         run: |
           python3 autonomia_expediente.py
+
+      - name: Enviar Relatório Final Telegram
+        if: always()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python modulo_1_infra/ares_telegram.py
