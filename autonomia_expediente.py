@@ -1,10 +1,10 @@
 import os, sys, asyncio, time, json, yaml
 from datetime import datetime
+from modulo_4_apolo.persistencia_nuvem import salvar_metrica_externa
 
 sys.path.append(os.path.abspath("."))
 
 def carregar_configuracao():
-    """Carrega as parâmetros do arquivo config.yaml."""
     caminho_config = "config.yaml"
     if os.path.exists(caminho_config):
         with open(caminho_config, "r", encoding="utf-8") as f:
@@ -12,7 +12,6 @@ def carregar_configuracao():
     return {}
 
 async def executar_atena_policy(config):
-    """Módulo Atena: Valida políticas de acordo com o config.yaml."""
     cfg_atena = config.get("atena_policy", {})
     politicas = cfg_atena.get("politicas_ativas", [])
     print(f"[ATENA] A verificar {len(politicas)} políticas ativas (Timeout: {cfg_atena.get('timeout_segundos', 15)}s)...")
@@ -25,7 +24,6 @@ async def executar_atena_policy(config):
     }
 
 async def executar_ronda_hermes(config):
-    """Módulo Hermes: Despacha tarefas respeitando as regras do config.yaml."""
     cfg_hermes = config.get("hermes_dispatch", {})
     max_tarefas = cfg_hermes.get("max_tarefas_por_ciclo", 5)
     print(f"[HERMES] Despachando tarefas operacionais (Limite: {max_tarefas} por ciclo)...")
@@ -37,7 +35,6 @@ async def executar_ronda_hermes(config):
     return {"status": "SUCESSO", "tarefas_processadas": 1, "limite_ciclo": max_tarefas}
 
 async def registrar_metricas_apolo(inicio_tempo, dados_atena, dados_hermes, config):
-    """Módulo Apolo: Registra métricas personalizadas pelo cliente configurado."""
     tempo_execucao = round(time.time() - inicio_tempo, 2)
     os.makedirs("modulo_4_apolo", exist_ok=True)
     
@@ -52,10 +49,14 @@ async def registrar_metricas_apolo(inicio_tempo, dados_atena, dados_hermes, conf
         "hermes_dispatch": dados_hermes
     }
     
+    # 1. Registro Local
     with open("modulo_4_apolo/apolo_metrics.json", "w", encoding="utf-8") as f:
         json.dump(metricas, f, indent=4, ensure_ascii=False)
         
-    print(f"[APOLO] Métricas gravadas para '{cliente}' ({tempo_execucao}s).")
+    print(f"[APOLO] Métricas gravadas localmente para '{cliente}' ({tempo_execucao}s).")
+
+    # 2. Persistência Externa / Nuvem
+    salvar_metrica_externa(metricas)
     return metricas
 
 async def main():
@@ -73,11 +74,11 @@ async def main():
     # 2. Despacho de Tarefas (Hermes)
     resultado_hermes = await executar_ronda_hermes(config)
     
-    # 3. Telemetria e Diagnóstico (Apolo)
+    # 3. Telemetria, Diagnóstico e Persistência Externa (Apolo)
     await registrar_metricas_apolo(inicio, resultado_atena, resultado_hermes, config)
     
     print("==================================================")
-    print("[OLIMPO AI] Ciclo parametrizado concluído com sucesso!")
+    print("[OLIMPO AI] Ciclo com Persistência Externa concluído!")
     print("==================================================")
 
 if __name__ == "__main__":
