@@ -1,13 +1,15 @@
 name: Olimpo Autonomia Cloud
 
 on:
-  schedule:
-    - cron: '*/30 * * * *' # Executa a cada 30 minutos automaticamente
   workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * *'
 
 jobs:
   executar-autonomia:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     steps:
       - name: Checkout do Repositório
         uses: actions/checkout@v4
@@ -17,9 +19,17 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Executar Script de Autonomia
+      - name: Instalar Dependências
         run: |
-          python3 autonomia_expediente.py
+          python -m pip install --upgrade pip
+          pip install python-dotenv requests
+
+      - name: Executar Script de Autonomia
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python main.py
 
       - name: Enviar Relatório Final Telegram
         if: always()
