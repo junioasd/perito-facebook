@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpo AI — Autonomous Enterprise B2B Platform</title>
+    <style>
+        :root {
+            --bg-primary: #0a0b0d;
+            --bg-secondary: #12141a;
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: #2a2e3d;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold-primary);
+            letter-spacing: 2px;
+        }
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+        .hero h1 span {
+            color: var(--gold-primary);
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+        .cta-btn {
+            background: var(--gold-primary);
+            color: #000;
+            padding: 0.9rem 2.2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .cta-btn:hover {
+            background: var(--gold-light);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+        }
+        .card h3 {
+            color: var(--gold-primary);
+            margin-top: 0;
+        }
+        footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            background: var(--bg-secondary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">🏛️ OLIMPO AI</div>
+        <div>
+            <a href="#modulos" style="color: var(--text-main); text-decoration: none; margin-right: 2rem;">Arquitetura</a>
+            <a href="#zeus" style="color: var(--gold-primary); text-decoration: none;">Módulo Zeus</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Plataforma Autónoma <span>Enterprise B2B</span></h1>
+        <p>O ecossistema definitivo orientado a agentes inteligentes com auditoria criptográfica SHA-256, motor de rollback, faturação baseada em uso e soberania total de dados.</p>
+        <a href="#contacto" class="cta-btn">Solicitar Demonstração Executiva</a>
+    </section>
+
+    <div class="container" id="modulos">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">Os 4 Pilares do Ecossistema</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Ares — Controlo Interativo</h3>
+                <p>Comunicação bidirecional em tempo real, relatórios gerenciais e alertas automáticos enviados via canais seguros.</p>
+            </div>
+            <div class="card">
+                <h3>Hermes — Motor de Despacho</h3>
+                <p>Gestão avançada de filas, execução assíncrona orientada a eventos e sistema de snapshots para reversão instantânea.</p>
+            </div>
+            <div class="card">
+                <h3>Atena — Políticas e Auditoria</h3>
+                <p>Garantia de conformidade corporativa, validação estrita de regras de negócio e registo imutável de decisões.</p>
+            </div>
+            <div class="card">
+                <h3>Apolo — Telemetria & Billing</h3>
+                <p>Métricas operacionais em tempo real, geração automatizada de status pages e motor de tarifação por créditos (Metered Billing).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="zeus" style="background: var(--bg-secondary); border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 4rem; padding: 3rem;">
+        <h2 style="color: var(--gold-primary); text-align: center; margin-top: 0;">Módulo Zeus: Soberania Criptográfica</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; color: var(--text-muted);">Cada execução de decisão gera uma prova matemática imutável em SHA-256, assegurando rastreabilidade total para auditorias internas e regulatórias rigorosas.</p>
+        <pre style="background: #000; padding: 1.5rem; border-radius: 8px; overflow-x: auto; color: #a6e3a1; font-family: monospace;">
+{
+    "tenant": "Empresa Alpha B2B",
+    "proof_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "timestamp": "2026-10-12T21:58:00Z",
+    "status": "VALIDADO_POR_ATENA"
+}
+        </pre>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Olimpo AI Corporation. Todos os direitos reservados. Soberania e Autonomia Total em Ambiente B2B.</p>
+    </footer>
+</body>
+</html>
