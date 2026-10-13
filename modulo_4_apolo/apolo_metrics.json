@@ -1,29 +1,20 @@
 {
-    "total_eventos": 3,
-    "mensagens_processadas": 1,
-    "alertas_disparados": 1,
-    "historico": [
-        {
-            "timestamp": "2026-10-09 16:39:51",
-            "tipo": "NOVA_MENSAGEM",
-            "detalhes": {
-                "user_id": "8928125542",
-                "text": "Teste Apolo"
-            }
-        },
-        {
-            "timestamp": "2026-10-09 16:39:51",
-            "tipo": "ALERTA_ENVIADO",
-            "detalhes": {
-                "origem": "Hermes"
-            }
-        },
-        {
-            "timestamp": "2026-10-09 16:55:49",
-            "tipo": "SISTEMA_INICIADO",
-            "detalhes": {
-                "status": "Boot Concluído"
-            }
-        }
-    ]
+    "timestamp": "2026-10-13T00:22:13.529698",
+    "cliente": "Empresa Alpha B2B",
+    "tempo_execucao_segundos": 1.0,
+    "status_geral": "OPERACIONAL_100%",
+    "atena_policy": {
+        "atena_status": "APROVADO",
+        "politicas_ativas": [
+            "rate_limit_failover",
+            "auditoria_seguranca",
+            "conformidade_operacional"
+        ],
+        "max_retries": 3
+    },
+    "hermes_dispatch": {
+        "status": "SUCESSO",
+        "tarefas_processadas": 1,
+        "limite_ciclo": 5
+    }
 }

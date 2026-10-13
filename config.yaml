@@ -1,25 +1,18 @@
-# =========================================================
-# OLIMPO AI - CONFIGURAÇÃO CENTRALIZADA DA OPERAÇÃO 24/7
-# =========================================================
-
 cliente:
-  nome: "Cliente Demonstration / Default"
-  ambiente: "producao"
-
+  nome: Empresa Alpha B2B
+  ambiente: producao
 atena_policy:
   max_retries: 3
   timeout_segundos: 15
   verificar_rate_limit: true
   politicas_ativas:
-    - "rate_limit_failover"
-    - "auditoria_seguranca"
-    - "conformidade_operacional"
-
+  - rate_limit_failover
+  - auditoria_seguranca
+  - conformidade_operacional
 hermes_dispatch:
-  prioridade_minima: "alta"
+  prioridade_minima: alta
   executar_tarefas_agendadas: true
   max_tarefas_por_ciclo: 5
-
 apolo_telemetria:
   salvar_historico_local: true
-  nivel_log: "INFO"
+  nivel_log: INFO
