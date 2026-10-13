@@ -1,6 +1,7 @@
 import os, sys, asyncio, time, json, yaml
 from datetime import datetime
 from modulo_4_apolo.persistencia_nuvem import salvar_metrica_externa
+from modulo_3_atena.auditoria_report import gerar_relatorio_auditoria
 
 sys.path.append(os.path.abspath("."))
 
@@ -57,6 +58,10 @@ async def registrar_metricas_apolo(inicio_tempo, dados_atena, dados_hermes, conf
 
     # 2. Persistência Externa / Nuvem
     salvar_metrica_externa(metricas)
+    
+    # 3. Geração de Relatório Executivo de Auditoria (Fase 4)
+    gerar_relatorio_auditoria()
+    
     return metricas
 
 async def main():
@@ -65,7 +70,7 @@ async def main():
     cliente = config.get("cliente", {}).get("nome", "Desconhecido")
     
     print("==================================================")
-    print(f"[OLIMPO AI] Execução Parametrizada | Cliente: {cliente}")
+    print(f"[OLIMPO AI] Execução Enterprise | Cliente: {cliente}")
     print("==================================================")
     
     # 1. Validação de Regras (Atena)
@@ -74,11 +79,11 @@ async def main():
     # 2. Despacho de Tarefas (Hermes)
     resultado_hermes = await executar_ronda_hermes(config)
     
-    # 3. Telemetria, Diagnóstico e Persistência Externa (Apolo)
+    # 3. Telemetria, Diagnóstico, Persistência e Auditoria Executiva
     await registrar_metricas_apolo(inicio, resultado_atena, resultado_hermes, config)
     
     print("==================================================")
-    print("[OLIMPO AI] Ciclo com Persistência Externa concluído!")
+    print("[OLIMPO AI] Ciclo Enterprise completo com sucesso!")
     print("==================================================")
 
 if __name__ == "__main__":
