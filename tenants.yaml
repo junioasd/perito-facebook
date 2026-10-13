@@ -1,0 +1,18 @@
+tenants:
+  - id: "tenant_fintech_01"
+    empresa: "PayShield Global"
+    perfil: "FinTech / High-Security"
+    creditos_iniciais: 100000
+    zeus_proof_required: true
+
+  - id: "tenant_saas_02"
+    empresa: "CloudScale B2B"
+    perfil: "SaaS Enterprise"
+    creditos_iniciais: 50000
+    zeus_proof_required: true
+
+  - id: "tenant_ecom_03"
+    empresa: "OmniLog E-Commerce"
+    perfil: "Retail & Supply Chain"
+    creditos_iniciais: 30000
+    zeus_proof_required: false

@@ -1,0 +1,40 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Olimpo AI Enterprise API",
+    "description": "API RESTful autónoma para orquestração B2B, auditoria SHA-256 (Zeus) e dispatch de eventos (Hermes).",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/onboarding": {
+      "post": {
+        "summary": "Onboarding de Novo Tenant Enterprise",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "empresa": { "type": "string" },
+                  "plano": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Tenant registado e provisionado com créditos." }
+        }
+      }
+    },
+    "/api/v1/zeus/settlement": {
+      "post": {
+        "summary": "Liquidação Criptográfica AI-to-AI",
+        "responses": {
+          "200": { "description": "Transação assinada e registada em SHA-256." }
+        }
+      }
+    }
+  }
+}
